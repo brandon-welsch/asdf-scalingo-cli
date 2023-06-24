@@ -52,6 +52,15 @@ scalingo --help
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
 install & manage versions.
 
+# Usage
+
+## Architecture Override
+
+The `ASDF_SCALINGO_CLI_OVERWRITE_ARCH` variable can be used to override the architecture that is
+used for determining which Scalingo CLI release download. Useful, for example, for allowing users
+on M1 Macs to install amd64 binary when there's no arm64 binary available when using old Scalingo
+CLI versions.
+
 # Contributing
 
 Contributions of any kind welcome! See the [contributing guide](contributing.md).
