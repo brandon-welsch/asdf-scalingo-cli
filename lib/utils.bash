@@ -2,10 +2,9 @@
 
 set -euo pipefail
 
-# TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for scalingo-cli.
 GH_REPO="https://github.com/Scalingo/cli"
 TOOL_NAME="scalingo-cli"
-TOOL_TEST="scalingo --version"
+TOOL_TEST="scalingo --help"
 
 fail() {
 	echo -e "asdf-$TOOL_NAME: $*"
@@ -14,7 +13,6 @@ fail() {
 
 curl_opts=(-fsSL)
 
-# NOTE: You might want to remove this if scalingo-cli is not hosted on GitHub releases.
 if [ -n "${GITHUB_API_TOKEN:-}" ]; then
 	curl_opts=("${curl_opts[@]}" -H "Authorization: token $GITHUB_API_TOKEN")
 fi
@@ -31,8 +29,6 @@ list_github_tags() {
 }
 
 list_all_versions() {
-	# TODO: Adapt this. By default we simply list the tag names from GitHub releases.
-	# Change this function if scalingo-cli has other means of determining installable versions.
 	list_github_tags
 }
 
@@ -41,8 +37,14 @@ download_release() {
 	version="$1"
 	filename="$2"
 
-	# TODO: Adapt the release URL convention for scalingo-cli
-	url="$GH_REPO/archive/v${version}.tar.gz"
+	local -r platform="$(get_platform)"
+	local -r arch="$(get_arch)"
+
+	if [ "$arch" == "arm" ]; then
+		fail "Unsupported arm arch, see $GH_REPO/releases"
+	fi
+
+	url="$GH_REPO/releases/download/${version}/scalingo_${version}_${platform}_${arch}.tar.gz"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
@@ -61,7 +63,6 @@ install_version() {
 		mkdir -p "$install_path"
 		cp -r "$ASDF_DOWNLOAD_PATH"/* "$install_path"
 
-		# TODO: Assert scalingo-cli executable exists.
 		local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
 		test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
@@ -71,4 +72,31 @@ install_version() {
 		rm -rf "$install_path"
 		fail "An error occurred while installing $TOOL_NAME $version."
 	)
+}
+
+get_platform() {
+	local -r kernel="$(uname -s)"
+	if [[ ${OSTYPE} == "msys" || ${kernel} == "CYGWIN"* || ${kernel} == "MINGW"* ]]; then
+		echo "windows"
+	else
+		uname | tr '[:upper:]' '[:lower:]'
+	fi
+}
+
+get_arch() {
+	local -r machine="$(uname -m)"
+
+	OVERWRITE_ARCH=${ASDF_SCALINGO_CLI_OVERWRITE_ARCH:-"false"}
+
+	if [[ ${OVERWRITE_ARCH} != "false" ]]; then
+		echo "${OVERWRITE_ARCH}"
+	elif [[ ${machine} == "arm64" ]] || [[ ${machine} == "aarch64" ]]; then
+		echo "arm64"
+	elif [[ ${machine} == *"arm"* ]] || [[ ${machine} == *"aarch"* ]]; then
+		echo "arm"
+	elif [[ ${machine} == *"386"* ]]; then
+		echo "386"
+	else
+		echo "amd64"
+	fi
 }

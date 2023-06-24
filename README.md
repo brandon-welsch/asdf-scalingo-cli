@@ -15,10 +15,7 @@
 
 # Dependencies
 
-**TODO: adapt this section**
-
 - `bash`, `curl`, `tar`: generic POSIX utilities.
-- `SOME_ENV_VAR`: set this environment variable in your shell config to load the correct version of tool x.
 
 # Install
 
@@ -37,13 +34,19 @@ scalingo-cli:
 asdf list-all scalingo-cli
 
 # Install specific version
+asdf install scalingo-cli 1.29.1
+
+# Install latest version
 asdf install scalingo-cli latest
 
 # Set a version globally (on your ~/.tool-versions file)
+asdf global scalingo-cli v1.29.1
+
+# Set always latest as a global version
 asdf global scalingo-cli latest
 
 # Now scalingo-cli commands are available
-scalingo --version
+scalingo --help
 ```
 
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
