@@ -12,18 +12,17 @@ asdf in Rust, with better performance and more features.
 
 # Contents
 
-- [Dependencies](#dependencies)
-- [Install](#install)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
-# Dependencies
+# Requirements
 
 - `bash`, `curl`, `tar`: generic POSIX utilities.
 
-# Install
-
-Plugin:
+# Installation
 
 ```shell
 asdf plugin add scalingo-cli
@@ -31,7 +30,7 @@ asdf plugin add scalingo-cli
 asdf plugin add scalingo-cli https://github.com/brandon-welsch/asdf-scalingo-cli.git
 ```
 
-scalingo-cli:
+# Usage
 
 ```shell
 # Show all installable versions
@@ -55,8 +54,6 @@ scalingo --help
 
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
 install & manage versions.
-
-# Usage
 
 ## Architecture Override
 
