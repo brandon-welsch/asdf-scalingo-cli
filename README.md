@@ -8,7 +8,8 @@
 
 > This asdf plugin also work nicely with [**rtx**](https://github.com/jdxcode/rtx) which is a fork of
 asdf in Rust, with better performance and more features.
-> **I recommend using `rtx` instead of `asdf` for a better usage experience** (see https://github.com/asdf-vm/asdf/issues/290).
+> **I recommend using `rtx` instead of `asdf` for a better usage experience**
+(see https://github.com/asdf-vm/asdf/issues/290).
 
 # Contents
 
@@ -24,13 +25,21 @@ asdf in Rust, with better performance and more features.
 
 # Installation
 
+## With asdf
+
 ```shell
-asdf plugin add scalingo-cli
-# or
 asdf plugin add scalingo-cli https://github.com/brandon-welsch/asdf-scalingo-cli.git
 ```
 
+## With rtx
+
+```shell
+rtx plugins install scalingo-cli https://github.com/brandon-welsch/asdf-scalingo-cli
+```
+
 # Usage
+
+## With asdf
 
 ```shell
 # Show all installable versions
@@ -43,19 +52,52 @@ asdf install scalingo-cli 1.29.1
 asdf install scalingo-cli latest
 
 # Set a version globally (on your ~/.tool-versions file)
-asdf global scalingo-cli v1.29.1
+asdf global scalingo-cli 1.29.1
 
 # Set always latest as a global version
 asdf global scalingo-cli latest
 
-# Now scalingo-cli commands are available
+# Show installed versions
+asdf list scalingo-cli
+
+# Now Scalingo CLI commands are available
 scalingo --help
 ```
 
-Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
+Check [asdf](https://github.com/asdf-vm/asdf) README for more instructions on how to
 install & manage versions.
 
-## Architecture Override
+## With rtx
+
+```bash
+# Show all installable versions
+rtx list-all scalingo-cli
+
+# Install specific version
+rtx install scalingo-cli@1.29.1
+
+# Install latest version
+rtx install scalingo-cli@latest
+
+# Set a version globally
+rtx use -g scalingo-cli@1.29.1
+
+# Set always latest as a global version
+rtx use -g scalingo-cli@latest
+
+# Show installed versions
+rtx list scalingo-cli
+
+# Now Scalingo CLI commands are available
+scalingo --help
+```
+
+Check [rtx](https://github.com/jdxcode/rtx) README for more instructions on how to
+install & manage versions.
+
+## Environment Variables
+
+### Architecture Override
 
 The `ASDF_SCALINGO_CLI_OVERWRITE_ARCH` variable can be used to override the architecture that is
 used for determining which Scalingo CLI release download. Useful, for example, for allowing users
