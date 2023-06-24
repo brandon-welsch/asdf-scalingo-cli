@@ -7,16 +7,36 @@ on:
   pull_request:
 
 jobs:
-  plugin_test:
+  asdf_test:
     name: asdf plugin test
     strategy:
       matrix:
         os:
           - ubuntu-latest
           - macos-latest
+          - windows-latest
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
     steps:
       - name: asdf_plugin_test
         uses: asdf-vm/actions/plugin-test@v2
         with:
-          command: scalingo --version
+          command: scalingo --help
+
+  rtx_test:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: jdxcode/rtx-action@v1
+      - run: mkdir -p ~/.local/share/rtx/plugins
+      - run: ln -s $PWD ~/.local/share/rtx/plugins/scalingo-cli
+      - run: rtx install scalingo-cli@latest
+      - run: rtx exec scalingo-cli@latest -- scalingo --help
