@@ -2,9 +2,13 @@
 
 # asdf-scalingo-cli [![Build](https://github.com/brandon-welsch/asdf-scalingo-cli/actions/workflows/build.yml/badge.svg)](https://github.com/brandon-welsch/asdf-scalingo-cli/actions/workflows/build.yml) [![Lint](https://github.com/brandon-welsch/asdf-scalingo-cli/actions/workflows/lint.yml/badge.svg)](https://github.com/brandon-welsch/asdf-scalingo-cli/actions/workflows/lint.yml)
 
-[scalingo-cli](https://doc.scalingo.com/platform/cli/start) plugin for the [asdf version manager](https://asdf-vm.com).
+**[scalingo-cli](https://doc.scalingo.com/platform/cli/start) plugin for the [asdf version manager](https://asdf-vm.com).**
 
 </div>
+
+> This asdf plugin also work nicely with [**rtx**](https://github.com/jdxcode/rtx) which is a fork of
+asdf in Rust, with better performance and more features.
+> **I recommend using `rtx` instead of `asdf` for a better usage experience** (see https://github.com/asdf-vm/asdf/issues/290).
 
 # Contents
 
