@@ -6,6 +6,8 @@
 
 </div>
 
+> **Note**
+>
 > This asdf plugin also work nicely with [**rtx**](https://github.com/jdxcode/rtx) which is a fork of
 asdf in Rust, with better performance and more features.
 > **I recommend using `rtx` instead of `asdf` for a better usage experience**
