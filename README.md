@@ -11,6 +11,11 @@ asdf in Rust, with better performance and more features.
 > **I recommend using `rtx` instead of `asdf` for a better usage experience**
 (see https://github.com/asdf-vm/asdf/issues/290).
 
+> **Warning**
+>
+> This is not an official Scalingo repository, but the plugin uses the
+[official binaries compiled by Scalingo](https://github.com/Scalingo/cli/releases).
+
 # Contents
 
 - [Requirements](#requirements)
