@@ -6,14 +6,14 @@
 
 </div>
 
-> **Note**
+> [!NOTE]
 >
 > This asdf plugin also work nicely with [**rtx**](https://github.com/jdxcode/rtx) which is a fork of
 asdf in Rust, with better performance and more features.
 > **I recommend using `rtx` instead of `asdf` for a better usage experience**
 (see https://github.com/asdf-vm/asdf/issues/290).
 
-> **Warning**
+> [!WARNING]
 >
 > This is not an official Scalingo repository, but the plugin uses the
 [official binaries compiled by Scalingo](https://github.com/Scalingo/cli/releases).
