@@ -8,10 +8,10 @@
 
 > [!NOTE]
 >
-> This asdf plugin also work nicely with [**rtx**](https://github.com/jdxcode/rtx) which is a fork of
+> This asdf plugin also work nicely with [**mise**](https://github.com/jdx/mise) which is a fork of
 asdf in Rust, with better performance and more features.
-> **I recommend using `rtx` instead of `asdf` for a better usage experience**
-(see https://github.com/asdf-vm/asdf/issues/290).
+> **I recommend using `mise` instead of `asdf` for a better usage experience**
+(see https://github.com/asdf-vm/asdf/issues/290 and https://mise.jdx.dev/dev-tools/comparison-to-asdf.html).
 
 > [!WARNING]
 >
@@ -38,11 +38,13 @@ asdf in Rust, with better performance and more features.
 asdf plugin add scalingo-cli https://github.com/brandon-welsch/asdf-scalingo-cli.git
 ```
 
-## With rtx
+## With mise
 
 ```shell
-rtx plugins install scalingo-cli https://github.com/brandon-welsch/asdf-scalingo-cli
+mise plugins install scalingo-cli https://github.com/brandon-welsch/asdf-scalingo-cli
 ```
+
+Or using [mise configuration files](https://mise.jdx.dev/configuration.html).
 
 # Usage
 
@@ -74,32 +76,32 @@ scalingo --help
 Check [asdf](https://github.com/asdf-vm/asdf) README for more instructions on how to
 install & manage versions.
 
-## With rtx
+## With mise
 
 ```bash
 # Show all installable versions
-rtx list-all scalingo-cli
+mise list-all scalingo-cli
 
 # Install specific version
-rtx install scalingo-cli@1.29.1
+mise install scalingo-cli@1.29.1
 
 # Install latest version
-rtx install scalingo-cli@latest
+mise install scalingo-cli@latest
 
 # Set a version globally
-rtx use -g scalingo-cli@1.29.1
+mise use -g scalingo-cli@1.29.1
 
 # Set always latest as a global version
-rtx use -g scalingo-cli@latest
+mise use -g scalingo-cli@latest
 
 # Show installed versions
-rtx list scalingo-cli
+mise list scalingo-cli
 
 # Now Scalingo CLI commands are available
 scalingo --help
 ```
 
-Check [rtx](https://github.com/jdxcode/rtx) README for more instructions on how to
+Check [mise](https://github.com/jdx/mise) README for more instructions on how to
 install & manage versions.
 
 ## Environment Variables
